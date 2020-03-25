@@ -15,33 +15,33 @@ var (
 )
 
 var (
-	Error = errorLog.Println
+	Error  = errorLog.Println
 	Errorf = errorLog.Printf
-	Info = infoLog.Println
-	Infof = infoLog.Printf
+	Info   = infoLog.Println
+	Infof  = infoLog.Printf
 )
 
 //log levels
 
 const (
-	InfoLevel  = iota
+	InfoLevel = iota
 	ErrorLevel
 	Disable
 )
 
-func SetLevel(level int)  {
+func SetLevel(level int) {
 	mu.Lock()
 	defer mu.Unlock()
 
-	for _, logger := range loggers{
+	for _, logger := range loggers {
 		logger.SetOutput(os.Stdout)
 	}
 
-	if ErrorLevel < level{
+	if ErrorLevel < level {
 		errorLog.SetOutput(ioutil.Discard)
 	}
 
-	if InfoLevel < level{
+	if InfoLevel < level {
 		infoLog.SetOutput(ioutil.Discard)
 	}
 }
