@@ -41,10 +41,10 @@ func (s *Session) Exec() (result sql.Result, err error) {
 	return
 }
 
-func (s *Session) QueryRaw() *sql.Row {
+func (s *Session) QueryRow() *sql.Row {
 	defer s.Clear()
 	log.Info(s.sql.String(), s.sqlVars)
-	return s.DB().QueryRow(s.sql.String(), s.sqlVars)
+	return s.DB().QueryRow(s.sql.String(), s.sqlVars...)
 }
 
 func (s *Session) QueryRows() (rows *sql.Rows, err error) {
