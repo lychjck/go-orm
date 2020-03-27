@@ -1,7 +1,6 @@
 package schema
 
 import (
-	"fmt"
 	"go-orm/dialect"
 	"go/ast"
 	"reflect"
@@ -27,9 +26,9 @@ func (schema *Schema) GetField(name string) *Field  {
 
 func Parse(dest interface{},d dialect.Dialect) *Schema  {
 	modelType := reflect.Indirect(reflect.ValueOf(dest)).Type()
-	fmt.Println(modelType)
-	fmt.Println(modelType.Kind())
-	fmt.Println(modelType.Name())
+	//fmt.Println(modelType)
+	//fmt.Println(modelType.Kind())
+	//fmt.Println(modelType.Name())
 	schema := &Schema{
 		Model: dest,
 		Name: modelType.Name(),

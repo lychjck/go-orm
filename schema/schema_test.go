@@ -1,7 +1,9 @@
 package schema
 
 import (
+	"fmt"
 	"go-orm/dialect"
+	"reflect"
 	"testing"
 )
 
@@ -14,6 +16,7 @@ var TestDial,_ = dialect.GetDialect("sqlite3")
 
 func TestParse(t *testing.T) {
 	schema := Parse(&User{},TestDial)
+	fmt.Println(reflect.TypeOf(schema))
 	if schema.Name != "User" || len(schema.Fields) != 2{
 		t.Fatal("failed to parse user struct")
 	}

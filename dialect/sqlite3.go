@@ -16,6 +16,7 @@ func init()  {
 }
 
 func (s *sqlite3) DataTypeOf(typ reflect.Value) string {
+	//将go语言的类型映射为sqlite3类型
 	switch typ.Kind() {
 	case reflect.Int,reflect.Int8,reflect.Int16,reflect.Int32,reflect.Uint,reflect.Uint8,reflect.Uint16,reflect.Uint32,reflect.Uintptr:
 		return "integer"

@@ -8,6 +8,7 @@ import (
 
 func TestSqlite3_DataTypeOf(t *testing.T) {
 	dial := &sqlite3{}
+	fmt.Println(reflect.TypeOf(dial))
 	cases := []struct{
 		Value interface{}
 		Type string
